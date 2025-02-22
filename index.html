@@ -3,88 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Go5z - Home</title>
+    <title>GO5Z - Innovation & Technology</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        :root {
+            --primary: #212121;
+            --accent: #2196f3;
+            --text: #333;
+            --bg: #f5f5f5;
+            --card-bg: white;
+            --text-light: #ffffff;
+            --nav-hover: #424242;
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-            text-align: center;
+            box-sizing: border-box;
         }
-        header {
-            background-color: #1e3a8a;
-            color: white;
-            padding: 20px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        nav {
-            background-color: #1e3a8a;
-            overflow: hidden;
-            text-align: center;
-        }
-        nav a {
-            display: inline-block;
-            color: white;
-            text-decoration: none;
-            padding: 14px 20px;
-            font-size: 18px;
-        }
-        nav a:hover {
-            background-color: #4a60c0;
-        }
-        .container {
-            padding: 20px;
-        }
-        .banner {
-            width: 100%;
-            max-width: 100%;
-            height: auto;
-        }
-        .content {
-            font-size: 18px;
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
         }
-        footer {
-            background-color: #1e3a8a;
-            color: white;
-            padding: 10px;
-            margin-top: 20px;
+
+        .header {
+            background: var(--primary);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo span {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: var(--nav-hover);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--text-light);
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .footer {
+            background: var(--primary);
+            color: var(--text-light);
+            padding: 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .button {
+            background: var(--accent);
+            color: var(--text-light);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
         @media (max-width: 768px) {
-            nav a {
+            .menu-toggle {
                 display: block;
-                width: 100%;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 1rem;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="/" class="logo">
+                <img src="data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='45' fill='%232196f3'/%3E%3Ctext x='50' y='65' font-family='Arial' font-size='40' fill='white' text-anchor='middle'%3EG5%3C/text%3E%3C/svg%3E" alt="GO5Z Logo">
+                <span>GO5Z</span>
+            </a>
+            <button class="menu-toggle">☰</button>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="BOOKS.HTML">Books</a>
+                <a href="/3d-design">3D Design</a>
+                <a href="/projects">Projects</a>
+                <a href="/contact">Contact</a>
+            </div>
+        </nav>
+    </header>
 
-<header>WELCOME TO GO5Z</header>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to GO5Z</h1>
+            <p>Exploring the intersection of technology, creativity, and innovation</p>
+        </div>
+    </section>
 
-<nav>
-    <a href="#">Home</a>
-   <a href="BOOKS.html">Books</a>
-    <a href="#">3D Design</a>
-    <a href="#">Projects</a>
-    <a href="#">Contact Us</a>
-</nav>
+    <main class="main-content">
+        <div class="card">
+            <h2>About Me</h2>
+            <p>Young Faizi aspires to innovate in technology. He enjoys reading, designing 3D models, writing, and working on electronic projects.</p>
+        </div>
+    </main>
 
-<div class="container">
-    <img src="banner.jpg" alt="Go5z Banner" class="banner">
-    <div class="content">
-        <p>Young Faizi aspires to innovate in technology. He enjoys reading, designing 3D models, writing, and working on electronic projects.</p>
-        <p>Please feel free to explore his website and leave feedback on the Contact Us page.</p>
-    </div>
-</div>
+    <footer class="footer">
+        <p>&copy; 2025 GO5Z. All rights reserved.</p>
+    </footer>
 
-<footer>&copy; 2025 Go5z. All rights reserved.</footer>
-
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
